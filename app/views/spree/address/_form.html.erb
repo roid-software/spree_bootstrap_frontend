@@ -22,10 +22,6 @@
     <%= form.label :address2, Spree.t(:street_address_2) %><br />
     <%= form.text_field :address2, :class => 'form-control' %>
   </p>
-  <p class="field" id=<%="#{address_id}city" %>>
-    <%= form.label :city, Spree.t(:city) %><span class="required">*</span><br />
-    <%= form.text_field :city, :class => 'form-control required' %>
-  </p>
   <p class="field" id=<%="#{address_id}country" %>>
     <%= form.label :country_id, Spree.t(:country) %><span class="required">*</span><br />
     <span id=<%="#{address_id}country-selection" %>>
@@ -57,6 +53,15 @@
         <%= form.text_field :state_name, :class => 'form-control required' %>
       </noscript>
   <% end %>
+  <p class="field" id=<%="#{address_id}city" %>>
+    <%= form.label :city, Spree.t(:city) %><span class="required">*</span><br />
+    <%= form.collection_select :city_id, Spree::City.all, :id, :name, {prompt: "Select a category"}, {class: "form-control"} %>
+  </p>
+
+  <p class="field" id=<%="#{address_id}location" %>>
+    <%= form.label :location, Spree.t(:location) %><span class="required">*</span><br />
+    <%= form.collection_select :location_id, Spree::Location.all, :id, :name, {prompt: "Select a category"}, {class: "form-control"} %>
+  </p>
 
   <p class="field" id=<%="#{address_id}zipcode" %>>
     <%= form.label :zipcode, Spree.t(:zip) %><span class="required">*</span><br />
