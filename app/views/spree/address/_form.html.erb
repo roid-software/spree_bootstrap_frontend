@@ -23,9 +23,14 @@
     <%= form.text_field :address2, :class => 'form-control' %>
   </p>
   <p class="field" id=<%="#{address_id}city" %>>
-    <%= form.label :city, Spree.t(:city) %><span class="required">*</span><br />
-    <%= form.text_field :city, :class => 'form-control required' %>
-  </p>
+     <%= form.label :city, Spree.t(:city) %><span class="required">*</span><br />
+     <%= form.collection_select :city_id, Spree::City.all, :id, :name, {prompt: "Select a category"}, {class: "form-control"} %>
+   </p>
+
+   <p class="field" id=<%="#{address_id}location" %>>
+     <%= form.label :location, Spree.t(:location) %><span class="required">*</span><br />
+     <%= form.collection_select :location_id, Spree::Location.all, :id, :name, {prompt: "Select a category"}, {class: "form-control"} %>
+   </p>
   <p class="field" id=<%="#{address_id}country" %>>
     <%= form.label :country_id, Spree.t(:country) %><span class="required">*</span><br />
     <span id=<%="#{address_id}country-selection" %>>
